@@ -22,6 +22,8 @@ from atracoes.api.viewsets import AtracoesViewSet
 from enderecos.api.viewsets import EnderecosViewSet
 from comentarios.api.viewsets import ComentariosViewSet
 from avaliacoes.api.viewsets import AvaliacoesViewSet
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.register(r'pontos_turisticos', PontoTuristicoViewSet, 'PontoTuristico')
@@ -35,4 +37,4 @@ urlpatterns = [
     path('', include(router.urls)), 
     path('admin/', admin.site.urls),
     
-]
+] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
